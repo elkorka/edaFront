@@ -1,0 +1,27 @@
+
+<div class="container mt-3">
+  <div class="card" *ngIf="listesClient">
+    <div class="card-header">Liste des clients</div>
+    <div class="card-body">
+        <table class="table">
+           <thead>
+              <tr>
+                <td>id</td> <td>Prénom</td> <td>Nom</td> <td>Email</td> <td>Adresse</td> <td>Téléphone</td><td>Date création</td>
+              </tr>
+           </thead>
+          <tbody>
+              <tr *ngFor="let c of listesClient">
+                <td>{{c.idClient}}</td>
+                <td>{{c.prenom}}</td>
+                <td>{{c.nom}}</td>
+                <td>{{c.email}}</td>
+                <td>{{c.adresse}}</td>
+                <td>{{c.telephone}}</td>
+                <td>{{c.createdAt}}</td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
