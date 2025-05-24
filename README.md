@@ -1,59 +1,53 @@
-# Frontend
+# Frontend Aplication pour la gestion des relations Client
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+# Angular 19
+Ce projet est un la partie Frontend du CRM ou on peut gerer les clients 
+. Pour l'instant seul l'authentification des utilisateurs est implementé.
 
-## Development server
+## Fonctionalités Terminé
+* Authentification de l'utilisateur avec  JWT
+* Deconnexion
+* Systeme de redirection des utilisateurs
+* 2 utilisateurs pour tester
+* * Utilisateur1:
+  * username : user1
+  * password : 12345
+  * Role : USER
+* * Utilisateur2:
+  * username : user2
+  * password : 12345
+  * Role : USER ADMIN
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
+## Fontionalités restant
+* UI pour CRUD des clients
+* UI por inscription des utilisateurs
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Stack technique
+* Angular
+* JSON Web Tokens (Oauth2 ,JWT)
 
-## Code scaffolding
+## Getting Started
+Pour demarrer ce projet vous aurez besoin d'installer sur votre machine local:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* nodeJs+
+* Angular Cli+
+* MariaDB
 
-```bash
-ng generate component component-name
-```
+## Commande dexecution
+* positionner vous dans le repertoire du projet
+* taper la commande ng serve
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
+Une fois le projet demarrer l'application est accessible à l'adresse :
+-> http://localhost:4200/
 
-## Building
+## Indentifiant de connexion ()
 
-To build the project run:
+* Utilisateur1:
+  * username : user1
+  * password : 12345
+* Utilisateur2:
+  * username : user2
+  * password : 12345
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
