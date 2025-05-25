@@ -8,6 +8,7 @@ Ce projet est un la partie Frontend du CRM ou on peut gerer les clients
 * Authentification de l'utilisateur avec  JWT
 * Deconnexion
 * Systeme de redirection des utilisateurs
+* Afficher liste des clients
 * 2 utilisateurs pour tester
 * * Utilisateur1:
   * username : user1
@@ -20,7 +21,7 @@ Ce projet est un la partie Frontend du CRM ou on peut gerer les clients
 
 
 ## Fontionalités restant
-* UI pour CRUD des clients
+* UI pour Read,Update et Delete des clients
 * UI por inscription des utilisateurs
 
 ## Stack technique

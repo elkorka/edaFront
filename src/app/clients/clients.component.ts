@@ -1,30 +1,35 @@
 import { Component } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {RouterOutlet} from '@angular/router';
+import {NavbarComponent} from '../navbar/navbar.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {NgFor, NgIf} from '@angular/common';
-
+import {AsyncPipe, JsonPipe, NgFor, NgIf} from '@angular/common';
+import {ClientService} from '../services/client.service';
+import {AuthService} from '../services/auth.service';
+import {catchError, Observable, throttle, throwError} from 'rxjs';
+import {Client} from '../model/client.model';
 @Component({
   selector: 'app-clients',
   imports: [
-     ReactiveFormsModule,NgIf,NgFor
+    RouterOutlet, NavbarComponent,ReactiveFormsModule, NgIf, NgFor, JsonPipe, AsyncPipe
   ],
   templateUrl: './clients.component.html',
   styleUrl: './clients.component.css'
 })
 export class ClientsComponent {
-  listesClient: any;
-  constructor(private http: HttpClient) {
+  listesClient !: Observable<Array<Client>>;
+  messageErreur:string | undefined;
+    constructor(private clientService : ClientService,public authService:AuthService) {
   }
 
   ngOnInit(){
-    this.http.get("http://localhost:8083/api/v1/client").subscribe( {
-      next : ( data)=>{
-          this.listesClient=data;
-        },
-      error : (err) => {
-          console.log(err)
-        }
-  });
+    this.listesClient=this.clientService.getAllClients().pipe(
+
+      catchError(err => {
+        this.messageErreur=err.message;
+        return throwError(err);
+      })
+
+    );
   }
 
 }
