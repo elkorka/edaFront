@@ -1,42 +1,78 @@
 
 <div class="container mt-3">
-  <ng-container *ngIf="listesClient | async as lClients; else failureOrLoading">
-    <div class="card" *ngIf="listesClient ">
+  <div class="row">
+    <div class="col-9">
+      <ng-container *ngIf="listesClient | async as lClients; else failureOrLoading">
+        <div class="card" *ngIf="listesClient ">
 
-      <div class="card-header">Liste des clients</div>
-      <div class="card-body">
-        <table class="table">
-          <thead>
-          <tr>
-            <td>id</td> <td>Prénom</td> <td>Nom</td> <td>Email</td> <td>Adresse</td> <td>Téléphone</td><td>Date création</td>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let c of listesClient | async">
-            <td>{{c.idClient}}</td>
-            <td>{{c.prenom}}</td>
-            <td>{{c.nom}}</td>
-            <td>{{c.email}}</td>
-            <td>{{c.adresse}}</td>
-            <td>{{c.telephone}}</td>
-            <td>{{c.createdAt}}</td>
-          </tr>
-          </tbody>
-        </table>
+          <div class="card-header">Liste des clients</div>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+              <tr>
+                <td>id</td> <td>Prénom</td> <td>Nom</td> <td>Email</td> <td>Adresse</td> <td>Téléphone</td><td>Date création</td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let c of listesClient | async">
+                <td>{{c.idClient}}</td>
+                <td>{{c.prenom}}</td>
+                <td>{{c.nom}}</td>
+                <td>{{c.email}}</td>
+                <td>{{c.adresse}}</td>
+                <td>{{c.telephone}}</td>
+                <td>{{c.createdAt}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #failureOrLoading >
+        <ng-container *ngIf="messageErreur; else loading">
+          <div class="text-danger">
+            {{messageErreur}}
+          </div>
+        </ng-container>
+        <ng-template #loading>
+          Loading .....
+        </ng-template>
+
+      </ng-template>
+
+    </div>
+    <div class="col-3">
+      <div class="card">
+        <div class="card-header">Nouveau Client</div>
+        <div class="card-body">
+          <form [formGroup]="newClientFormGroup" (ngSubmit)="handleAjouterClient()">
+            <div class="mb-3">
+              <label class="form-label" for="prenom">Prénom</label>
+              <input type="text" class="form-control" formControlName="prenom">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nom</label>
+              <input type="text" class="form-control" formControlName="nom">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="text" class="form-control" formControlName="email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Adresse</label>
+              <input type="text" class="form-control" formControlName="adresse">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Télephone</label>
+              <input type="text" class="form-control" formControlName="telephone">
+            </div>
+            <button class="btn btn-success">Enregistrer</button>
+          </form>
+        </div>
       </div>
     </div>
-  </ng-container>
-  <ng-template #failureOrLoading >
-    <ng-container *ngIf="messageErreur; else loading">
-      <div class="text-danger">
-        {{messageErreur}}
-      </div>
-    </ng-container>
-    <ng-template #loading>
-      Loading .....
-    </ng-template>
 
-  </ng-template>
+  </div>
 
 </div>
 
